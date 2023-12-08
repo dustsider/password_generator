@@ -20,8 +20,13 @@ password_len = str(input("How long do you want your password to be? (integers on
 # Use for loop with range of password length defined as above to add characters to password 
 # single quotations in loop to ensure no whitespace between characters
 
-password = ''
-for i in range (int(password_len)):
-    password  += ''.join(secrets.choice(selection_list))
+while True:
+    password = ''
+    for i in range (int(password_len)):
+        password  += ''.join(secrets.choice(selection_list))
+    if (any(char in special_chars for char in password) and sum (char in digits for char in password) >= 2):
+        break
+
+print(password)
 
 print(password)
